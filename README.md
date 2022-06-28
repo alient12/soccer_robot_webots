@@ -68,8 +68,10 @@ To get the robot coordination there was a python dictionary variable named `ball
 ![angle](https://user-images.githubusercontent.com/73688480/176278635-87ebfc9b-1c23-4ea3-be1d-de0f2fcd465d.png)
 
 <h1 align="center">Lab</h1>
+
 ## Goal
 Connecting to raspberry pi (robot) using SSH and control it using keyboard (WSAD keys)
+
 
 ![lab](./Lab/result.gif)
 
