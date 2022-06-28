@@ -57,15 +57,21 @@ def set_v_w(v, w):
         self.left_motor.setVelocity(0)
 ```
 ## Webots
-The credit of soccer robot simulation is belongs to [Adman](https://github.com/Adman) from this [repo](https://github.com/RoboCupJuniorTC/rcj-soccersim)
+The credit of soccer robot simulation is belongs to [Adman](https://github.com/Adman) from this repo [rcj-soccersim](https://github.com/RoboCupJuniorTC/rcj-soccersim)
 
 The only difference is robot controllers.
 
-To get the robot coordination there was a python dictionary variable named `ball_data` that has to keys named `strength` and `direction`. `strength` is the IR sensor output. it's reverse of distance. `direction` was an array with unknown normalized data between -1 and 1. with multiple test understood they probably are sine and cosine of the angle between robot and ball.
+To get the robot coordination there was a python dictionary variable named `ball_data` that has to keys named `strength` and `direction`. `strength` is the IR sensor output. it's reverse of distance. `direction` was an array with unknown normalized data between -1 and 1. with multiple tests understood they probably are sine and cosine of the angle between robot and ball.
 
 ![direction](./Exercise/images/direction.png)
 
 ![angle](./Exercise/images/angle.png)
+
+### Known bugs
+as we told
+> with multiple tests understood they probably are sine and cosine of the angle between robot and ball
+
+we're not sure what these variables exactly are, because they work like that most of the time but because of Webots or rcj-soccersim code bugs, sometimes they don't work like that and that causes unstablity of the robot. e.g. when robot is exactly behind the ball, `direction[1]` should be 0, but it's 0.8 and we don't know why.
 
 <h1 align="center">Lab</h1>
 
