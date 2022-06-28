@@ -76,3 +76,6 @@ Connecting to raspberry pi (robot) using SSH and control it using keyboard (WSAD
 ![lab](./Lab/result.gif)
 
 <h1 align="center">Project</h1>
+
+## Goal
+A soccer playing robot
