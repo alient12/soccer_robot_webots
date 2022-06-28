@@ -63,9 +63,9 @@ The only difference is robot controllers.
 
 To get the robot coordination there was a python dictionary variable named `ball_data` that has to keys named `strength` and `direction`. `strength` is the IR sensor output. it's reverse of distance. `direction` was an array with unknown normalized data between -1 and 1. with multiple test understood they probably are sine and cosine of the angle between robot and ball.
 
-![direction](https://user-images.githubusercontent.com/73688480/176278617-12e9b9ad-635a-4804-9b9c-f599d2af70fa.PNG)
+![direction](./Exercise/images/direction.png)
 
-![angle](https://user-images.githubusercontent.com/73688480/176278635-87ebfc9b-1c23-4ea3-be1d-de0f2fcd465d.png)
+![angle](./Exercise/images/angle.png)
 
 <h1 align="center">Lab</h1>
 
