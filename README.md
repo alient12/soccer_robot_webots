@@ -63,15 +63,15 @@ The only difference is robot controllers.
 
 To get the robot coordination there was a python dictionary variable named `ball_data` that has to keys named `strength` and `direction`. `strength` is the IR sensor output. it's reverse of distance. `direction` was an array with unknown normalized data between -1 and 1. with multiple tests understood they probably are sine and cosine of the angle between robot and ball.
 
-![direction](./Exercise/images/direction.png)
-
-![angle](./Exercise/images/angle.png)
+| direction   |      angle      |
+|:----------:|:-------------:|
+| ![direction](./Exercise/images/direction.png) | ![angle](./Exercise/images/angle.png) |
 
 ## Goal #4 (following the ball)
 
 ![ball_test](./Exercise/images/ball_test_output.gif)
 
-To make it simpler we defined a `PI_controller` class, and used it for ball tracking. The ceoficients of Integrator (Ki) and Power (Kp) are beeing changed dependent to to relative location of robot and ball. e.g. we defined a flag named `turning_flag` for the situations that only ***ω*** speed is better for the robot. Another case is the distance between robot and ball, for distances more than 0.05 we use constant v with value of 0.75 but for less there is a PI controller.
+To make it simpler we defined a `PI_controller` class, and used it for ball tracking. The ceoficients of Integrator (Ki) and Power (Kp) are beeing changed dependent to  relative location of robot and ball. e.g. we defined a flag named `turning_flag` for the situations that only ***ω*** speed is better for the robot. Another case is the distance between robot and ball, for distances more than 0.05 we use constant v with value of 0.75 but for less there is a PI controller.
 
 ### Known bugs
 as we told
