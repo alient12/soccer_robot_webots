@@ -15,6 +15,22 @@ I = 0
 I_v = 0
 I_w = 0
 
+class PI_controller:
+    def __init__(self, Kp, Ki):
+        self.I = 0
+        self.T = 1.3e-6
+        self.Ki = Ki
+        self.Kp = Kp
+    def update(self, error):
+        self.I = self.T * self.Ki * error + self.I
+        Y = -self.Kp * error - self.I
+        return Y
+
+v_ctrl = PI_controller(1, 5)
+w_ctrl = PI_controller(5, 10)
+turning_flag = False
+sign = 1
+
 class MyRobot1(RCJSoccerRobot):
 
     def run(self):
@@ -160,56 +176,61 @@ class MyRobot1(RCJSoccerRobot):
                 ################################################################
                 ########################### ball 4:P & PI ###########################
                 t0 = time.time()
-                global I, I_v, I_w
                 T = 1.3e-6
-
-                e_r = 1 / ball_data["strength"] * 55 / 35
                 
+                global turning_flag
+                global sign
                 cos_phi = ball_data["direction"][0]
                 sin_phi = ball_data["direction"][1]
                 e_phi = math.atan2(sin_phi, cos_phi)
+                e_r = -1 / ball_data["strength"] * 55 / 35
 
-                k_p_v = 2
-                K_I_v = 5
-                k_p_w = 5
-                K_I_w = 10
-
-                if abs(e_r) < 0.01:
-                    # PI
-                    # I_v = T * K_I_v * e_r + I_v
-                    # v = k_p_v * e_r - I_v
-
-                    # P
-                    # v = -k_p_v * e_r
-
-                    # Nothing
-                    v = 0
+                if abs(e_r) < 0.05:
+                    v = v_ctrl.update(e_r)
                 else:
-                    v = 0.5
+                    v = 0.75
                 
+                w_ctrl.Ki = 5
+                w_ctrl.Kp = 10
                 if abs(e_phi) > math.pi * 69 / 180 and abs(e_r) > 0.5:
                     v = 0.01
-                    k_p_w = 7.5
+                    w_ctrl.Kp = 7.5
                 
                 elif abs(e_phi) > math.pi * 69 / 180 and abs(e_r) < 0.01:
                     v = 0.01
-                    k_p_w = 1
-                    K_I_w = 15
+                    w_ctrl.Kp = 1
+                    w_ctrl.Ki = 15
                 
-                # PI
-                I_w = T * K_I_w * e_phi + I_w
-                w = -k_p_w * e_phi - I_w
+                if turning_flag or (cos_phi < 0  and abs(sin_phi) < 0.5 ) or (abs(cos_phi) < 0.1 and abs(sin_phi) > 0.5):
+                    if not turning_flag:
+                        turning_flag = True
+                        sign = -1 if e_phi > 0 else 1
+                    if cos_phi > 0 and abs(cos_phi - 1) < 0.001:
+                        turning_flag = False
+                        return
+                    v = 0
+                    
+                    if abs(e_phi) < 0.05:
+                        turning_flag = False
+                        return
+                    else:
+                        sign = -1 if e_phi > 0 else 1
+                        w = 15 * sign
+                    set_v_w(v, w)
+                else:
+                    w = w_ctrl.update(e_phi)
+                    set_v_w(v, w)
 
-                # P
-                # w = -k_p_w * e_phi
-                
-                
+                w = w_ctrl.update(e_phi)
+                v = v_ctrl.update(e_r)
                 set_v_w(v, w)
+
+
+                
                 t1 = time.time()
                 delta_t = t1 - t0 
                 if delta_t < T:
                     time.sleep(T - delta_t)
-
                 ################################################################
                 
                 
