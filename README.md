@@ -71,6 +71,8 @@ To get the robot coordination there was a python dictionary variable named `ball
 
 ![ball_test](./Exercise/images/ball_test_output.gif)
 
+To make it simpler we defined a `PI_controller` class, and used it for ball tracking. The ceoficients of Integrator (Ki) and Power (Kp) are beeing changed dependent to to relative location of robot and ball. e.g. we defined a flag named `turning_flag` for the situations that only ***ω*** speed is better for the robot. Another case is the distance between robot and ball, for distances more than 0.05 we use constant v with value of 0.75 but for less there is a PI controller.
+
 ### Known bugs
 as we told
 > with multiple tests understood they probably are sine and cosine of the angle between robot and ball
