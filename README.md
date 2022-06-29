@@ -7,7 +7,7 @@
 * Ali Entezari
 * Pouya Ibrahimi
 * Sevil Xojasteh
-* Ali Qolami
+* Alireza Qolami
 
 <h1 align="center">Exercise</h1>
 
@@ -66,6 +66,10 @@ To get the robot coordination there was a python dictionary variable named `ball
 ![direction](./Exercise/images/direction.png)
 
 ![angle](./Exercise/images/angle.png)
+
+## Goal #4 (following the ball)
+
+![ball_test](./Exercise/images/ball_test_output.gif)
 
 ### Known bugs
 as we told
