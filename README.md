@@ -91,3 +91,17 @@ Connecting to raspberry pi (robot) using SSH and control it using keyboard (WSAD
 
 ## Goal
 A soccer playing robot
+
+The main algorithm inlcudes 2 main states:
+1. following the ball
+2. has the ball
+    - attack
+    - defend
+### following the ball
+using the algorithm in exercise the robot follows the ball until it reaches near the ball so we asume that the robot has the ball.
+
+### has the ball
+depends on the direction of the ball and the robot and the gate of teams, it defines to attack or defend.
+In both cases the controller tries to go to oponent gate but the ceoficients of the controller are different.
+for attack mode because the ball is between oponent gate and robot, it has high velosity to goal. for defend mode the ball is between the robot gate and it self, so it
+uses low velosity to controll the ball to the other direction.
