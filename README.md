@@ -72,12 +72,26 @@ To get the robot coordination there was a python dictionary variable named `ball
 ![ball_test](./Exercise/images/ball_test_output.gif)
 
 To make it simpler we defined a `PI_controller` class, and used it for ball tracking. The ceoficients of Integrator (Ki) and Power (Kp) are beeing changed dependent to  relative location of robot and ball. e.g. we defined a flag named `turning_flag` for the situations that only ***ω*** speed is better for the robot. Another case is the distance between robot and ball, for distances more than 0.05 we use constant v with value of 0.75 but for less there is a PI controller.
-
-## Controller graph
+## Controller
+### Controller graph
 In the below graph you can see the graph of controllers motor voltage output response to errors.
 ![graph](./graph/graph.png)
-## Discretization
+### Discretization
 We measured the maximum time of each loop (T = 1.3e-6) and used a `time.sleep()` to make the total time of each loop constant.
+## Controller class
+```python
+class PI_controller:
+    def __init__(self, Kp, Ki):
+        self.I = 0
+        self.T = 1.3e-6
+        self.Ki = Ki
+        self.Kp = Kp
+    def update(self, error):
+        self.I = self.T * self.Ki * error + self.I
+        Y = -self.Kp * error - self.I
+        return Y
+```
+We tested several Kis and Kps and higher Kp is better for response time and higher Kp results better final error.
 
 ### Known bugs
 as we told
