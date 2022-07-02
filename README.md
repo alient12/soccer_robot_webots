@@ -57,11 +57,11 @@ def set_v_w(v, w):
         self.left_motor.setVelocity(0)
 ```
 ## Webots
-The credit of soccer robot simulation is belongs to [Adman](https://github.com/Adman) from this repo [rcj-soccersim](https://github.com/RoboCupJuniorTC/rcj-soccersim)
+The credit of soccer robot simulation is belonged to [Adman](https://github.com/Adman) from this repo [rcj-soccersim](https://github.com/RoboCupJuniorTC/rcj-soccersim)
 
 The only difference is robot controllers.
 
-To get the robot coordination there was a python dictionary variable named `ball_data` that has to keys named `strength` and `direction`. `strength` is the IR sensor output. it's reverse of distance. `direction` was an array with unknown normalized data between -1 and 1. with multiple tests understood they probably are sine and cosine of the angle between robot and ball.
+To get the robot coordination there was a python dictionary variable named `ball_data` that has two keys named `strength` and `direction`. `strength` is the IR sensor output. it's reverse of distance. `direction` was an array with unknown normalized data between -1 and 1. with multiple tests understood they probably are sine and cosine of the angle between robot and ball.
 
 | direction   |      angle      |
 |:----------:|:-------------:|
