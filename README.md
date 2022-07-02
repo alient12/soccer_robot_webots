@@ -4,10 +4,10 @@
 , **Teaching Asistant**: AmirAli Setayeshi
 
 **Team members:**
-* Ali Entezari
-* Pouya Ibrahimi
-* Sevil Xojasteh
-* Alireza Qolami
+* Ali Entezari (25% participant)
+* Pouya Ibrahimi (25% participant)
+* Sevil Xojasteh (25% participant)
+* Alireza Qolami (25% participant)
 
 <h1 align="center">Exercise</h1>
 
