@@ -78,7 +78,7 @@ In the below graph you can see the graph of controllers motor voltage output res
 ![graph](./graph/graph.png)
 ### Discretization
 We measured the maximum time of each loop (T = 1.3e-6) and used a `time.sleep()` to make the total time of each loop constant.
-## Controller class
+### Controller class
 ```python
 class PI_controller:
     def __init__(self, Kp, Ki):
